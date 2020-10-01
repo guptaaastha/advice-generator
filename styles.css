@@ -1,0 +1,46 @@
+body {
+  align-items: center;
+  background-color: #bad8b6;
+  color: #bad8b6;
+  display: flex;
+  flex-direction: column;
+  font-family: "Sansita Swashed", cursive;
+  font-weight: bold;
+  font-size: 2em;
+  justify-content: center;
+  min-height: 90vh;
+  padding: 10px;
+  text-align: center;
+}
+
+.btn {
+  background: #bad8b6;
+  border: 2px solid #61b390;
+  border-radius: 40px;
+  color: #61b390 !important;
+  font-family: "Sansita Swashed", cursive;
+  font-weight: bold;
+  font-size: 0.8em;
+  padding: 10px 10px;
+}
+.btn:hover {
+  background: #61b390;
+  color: #bad8b6 !important;
+  cursor: pointer;
+}
+
+.container {
+  border-radius: 10px;
+  max-width: 100%;
+  padding: 20px;
+  width: 350px;
+}
+
+.card {
+  background-color: #61b390;
+  border-radius: 5%;
+  height: auto;
+  height: auto !important; /* for IE as it does not support min-height */
+  height: 30px;
+  padding: 5%;
+}
