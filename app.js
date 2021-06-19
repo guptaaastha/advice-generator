@@ -5,33 +5,30 @@ container.setAttribute("class", "container");
 
 app.appendChild(container);
 
-var request = new XMLHttpRequest();
+const getAdvice = () => {
+  document.getElementById("btn").disabled = true;
 
-// Make a get request to the server
-request.open("GET", "https://api.adviceslip.com/advice", true);
+  fetch("https://api.adviceslip.com/advice")
+    .then((response) => response.json())
+    .then((data) => {
+      const previousCard = document.getElementById("card");
+      if (previousCard != null) previousCard.remove();
+      const card = document.createElement("div");
+      card.setAttribute("class", "card");
+      card.setAttribute("id", "card");
 
-request.onload = function () {
-  // Begin accessing JSON data here
-  var data = JSON.parse(this.response);
+      const p = document.createElement("p");
+      p.textContent = data.slip.advice;
 
-  // If the request was successful, display the quote
-  if (request.status >= 200 && request.status < 400) {
-    const card = document.createElement("div");
-    card.setAttribute("class", "card");
+      container.appendChild(card);
+      card.appendChild(p);
+    })
+    .catch((error) => {
+      const errorMessage = document.createElement("marquee");
+      errorMessage.textContent =
+        `Something went wrong :( What went wrong? this:` + error;
+      app.appendChild(errorMessage);
+    });
 
-    const p = document.createElement("p");
-    p.textContent = data.slip.advice;
-
-    container.appendChild(card);
-    card.appendChild(p);
-  }
-
-  // If the request was unsuccessful, put a scrolling message for the same
-  else {
-    const errorMessage = document.createElement("marquee");
-    errorMessage.textContent = `Something went wrong :(`;
-    app.appendChild(errorMessage);
-  }
+  setTimeout(() => (document.getElementById("btn").disabled = false), 5000);
 };
-
-request.send();

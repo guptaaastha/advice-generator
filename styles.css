@@ -33,6 +33,11 @@ body {
   color: #bad8b6 !important;
   cursor: pointer;
 }
+.btn:disabled {
+  background: #bad8b6;
+  color: #61b390 !important;
+  cursor: not-allowed;
+}
 
 .container {
   border-radius: 10px;
